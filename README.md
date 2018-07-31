@@ -15,7 +15,7 @@
 ```
 
 ## 初始化
-在 application:didFinishLaunchingWithOptions 初始化。
+在 ` application:didFinishLaunchingWithOptions ` 初始化。
 ```
 [[YHTXStorage sharedStorage] setupStorageServiceWithAppID:@"1257102055" regionName:@"ap-chengdu"];
 ```
