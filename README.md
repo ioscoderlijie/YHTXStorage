@@ -1,8 +1,8 @@
 # YHTXStorage
 腾讯云存储的封装
 
-##前言
-如果使用临时签名系统，请在上传或者下载之前请提前设置好 credential
+## 前言
+如果使用临时签名系统，请在上传或者下载之前请提前设置好 ==credential==
 ```
 @property (nonatomic, strong, nullable) QCloudCredential *credential;
 ```
@@ -14,13 +14,13 @@
         [YHTXStorage sharedStorage].credential.token = @"4";
 ```
 
-##初始化
+## 初始化
 在 application:didFinishLaunchingWithOptions 初始化。
 ```
 [[YHTXStorage sharedStorage] setupStorageServiceWithAppID:@"1257102055" regionName:@"ap-chengdu"];
 ```
 
-##上传
+## 上传
 ```
 [[YHTXStorage sharedStorage] uploadFileWithFileName:fileName filePath:path bucketName:@"test-1257102055" progressBlock:^(CGFloat progress) {
         NSLog(@"------上传进度:%.2f",progress);
@@ -33,7 +33,7 @@
     }];
 ```
 
-##下载
+## 下载
 ```
 [[YHTXStorage sharedStorage] downloadFileWithObjectName:objectName bucketName:@"test-1257102055" savePath:path progressBlock:^(CGFloat progress) {
         NSLog(@"😆:下载进度:%.2f",progress);
