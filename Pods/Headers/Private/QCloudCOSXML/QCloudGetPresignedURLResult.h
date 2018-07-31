@@ -1,0 +1,1 @@
+../../../QCloudCOSXML/QCloudCOSXML/Classes/Manager/QCloudGetPresignedURLResult.h

@@ -1,0 +1,1 @@
+../../../QCloudCOSXML/QCloudCOSXML/Classes/Transfer/QCloudPutObjectCopyRequest.h

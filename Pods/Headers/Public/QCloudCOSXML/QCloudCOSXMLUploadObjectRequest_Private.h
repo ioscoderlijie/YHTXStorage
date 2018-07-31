@@ -1,0 +1,1 @@
+../../../QCloudCOSXML/QCloudCOSXML/Classes/Transfer/QCloudCOSXMLUploadObjectRequest_Private.h

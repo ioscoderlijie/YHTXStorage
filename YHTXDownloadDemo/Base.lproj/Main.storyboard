@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZF-g0-dO4">
+                                <rect key="frame" x="127.5" y="140" width="120" height="40"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Waz-m2-Vf7"/>
+                                    <constraint firstAttribute="width" constant="120" id="cXc-7g-e1q"/>
+                                </constraints>
+                                <state key="normal" title="上传">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1lp-ZP-eMc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="201-IP-Hmv">
+                                <rect key="frame" x="127.5" y="507" width="120" height="40"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="9Rn-CX-BZB"/>
+                                    <constraint firstAttribute="height" constant="40" id="xwJ-XQ-CwQ"/>
+                                </constraints>
+                                <state key="normal" title="下载">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A3i-oI-nfx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="201-IP-Hmv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-120" id="MSv-s4-TPQ"/>
+                            <constraint firstItem="FZF-g0-dO4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="X3v-WD-1n7"/>
+                            <constraint firstItem="FZF-g0-dO4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="doN-Pz-5C9"/>
+                            <constraint firstItem="201-IP-Hmv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nSn-S4-fSp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
