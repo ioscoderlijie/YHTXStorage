@@ -9,7 +9,7 @@
 #import "YHTXStorage.h"
 
 //是否使用临时签名(测试环境下，可以注释掉改宏，线上环境时，最好不要注释)
-//#define    USE_TEMPERATE_SECRET
+//#define    k_YH_USE_TEMPERATE_SECRET
 //测试环境下使用，secretID和secretKey写死了，只是用于测试，线上环境不能这样做
 #define    kYHTXStorage_SecretID    @"AKIDHZB3lIYppt5UJ372rZ8ZpA3grrimojek"
 #define    kYHTXStorage_SecretKey   @"BC7um4EUbv4NbelnzNchaHKFDh6KbjgW"
@@ -103,7 +103,7 @@
 
 #pragma mark - QCloudSignatureProvider
 - (void)signatureWithFields:(QCloudSignatureFields *)fileds request:(QCloudBizHTTPRequest *)request urlRequest:(NSMutableURLRequest *)urlRequst compelete:(QCloudHTTPAuthentationContinueBlock)continueBlock{
-#ifdef USE_TEMPERATE_SECRET
+#ifdef k_YH_USE_TEMPERATE_SECRET
     [self.credentialFenceQueue performAction:^(QCloudAuthentationCreator *creator, NSError *error) {
         if (error) {
             continueBlock(nil, error);
