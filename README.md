@@ -2,7 +2,7 @@
 腾讯云存储的封装
 
 ## 前言
-如果使用临时签名系统，请在上传或者下载之前请提前设置好 == credential ==
+如果使用临时签名系统，请在上传或者下载之前请提前设置好 > credential <
 ```
 @property (nonatomic, strong, nullable) QCloudCredential *credential;
 ```
