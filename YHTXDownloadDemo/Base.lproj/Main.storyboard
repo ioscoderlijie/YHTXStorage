@@ -46,16 +46,51 @@
                                     <action selector="downloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A3i-oI-nfx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npt-wx-CUR">
+                                <rect key="frame" x="127" y="210" width="120" height="40"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="FWN-kw-gF8"/>
+                                    <constraint firstAttribute="height" constant="40" id="jnB-e0-jqU"/>
+                                </constraints>
+                                <state key="normal" title="暂停上传">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseUploadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Yc-7I-5k2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-Ar-cgY">
+                                <rect key="frame" x="127" y="280" width="120" height="40"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="W4Z-2H-dlB"/>
+                                    <constraint firstAttribute="width" constant="120" id="eRc-MK-g8t"/>
+                                </constraints>
+                                <state key="normal" title="取消上传">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelUploadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="68d-jB-qGB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="EQc-Ar-cgY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Ml-LD-Fzg"/>
+                            <constraint firstItem="EQc-Ar-cgY" firstAttribute="top" secondItem="npt-wx-CUR" secondAttribute="bottom" constant="30" id="KPK-t5-9Jc"/>
                             <constraint firstItem="201-IP-Hmv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-120" id="MSv-s4-TPQ"/>
                             <constraint firstItem="FZF-g0-dO4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="X3v-WD-1n7"/>
+                            <constraint firstItem="npt-wx-CUR" firstAttribute="top" secondItem="FZF-g0-dO4" secondAttribute="bottom" constant="30" id="ccz-pC-LKX"/>
                             <constraint firstItem="FZF-g0-dO4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="doN-Pz-5C9"/>
                             <constraint firstItem="201-IP-Hmv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nSn-S4-fSp"/>
+                            <constraint firstItem="npt-wx-CUR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qe1-dj-hrd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="npt-wx-CUR" id="Kfu-nJ-GTF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

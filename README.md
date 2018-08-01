@@ -1,5 +1,5 @@
 # YHTXStorage
-腾讯云存储的封装
+基于腾讯云存储的封装
 
 ## 前言
 如果使用临时签名系统，请在上传或者下载之前请提前设置好 ` credential `
@@ -31,6 +31,30 @@
             NSLog(@"😆上传成功:%@",result.description);
         }
     }];
+```
+## 暂停上传
+```
+[[YHTXStorage sharedStorage] pauseUploadRequestWithBucketName:self.uploadBucketName fileName:self.uploadFileName];
+```
+
+## 继续上传
+```
+[[YHTXStorage sharedStorage] resumeUploadRequestWithBucketName:self.uploadBucketName fileName:self.uploadFileName progressBlock:^(CGFloat progress) {
+    NSLog(@"继续上传--进度:%.2f",progress);
+} completionBlock:^(NSError * _Nullable error, QCloudUploadObjectResult * _Nullable result) {
+    if (error) {
+        NSLog(@"😆继续上传--上传失败:%@",error);
+        } else {
+            NSLog(@"😆继续上传--上传成功:%@",result.description);
+    }
+}];
+```
+
+
+
+## 取消上传
+```
+[[YHTXStorage sharedStorage] cancelUploadRequestWithBucketName:self.uploadBucketName fileName:self.uploadFileName];
 ```
 
 ## 下载

@@ -11,18 +11,27 @@
 #import <QCloudCOSXML/QCloudCOSXML.h>
 
 NS_ASSUME_NONNULL_BEGIN
-//typedef void(^YHTXStorageTmpAuthentationBlock)(NSString *secretID, NSString *secretKey, NSDate *experationDate, NSString *token);
 
 typedef void(^YHTXStorageUploadProgressBlock)(CGFloat progress);
 typedef void(^YHTXStorageUploadCompletionBlock)(NSError *_Nullable error,QCloudUploadObjectResult *_Nullable result);
 
 typedef void(^YHTXStorageDownloadProgressBlock)(CGFloat progress);
-typedef void(^YHTXStorageDownloadCompletionBlock)(id _Nullable outputObject,NSError *_Nullable error);
+typedef void(^YHTXStorageDownloadCompletionBlock)(id _Nullable outputObject,NSString *_Nullable path,NSError *_Nullable error);
+
+FOUNDATION_EXTERN NSInteger const kYHTXDownloadNoFilePathErrorKey;
+FOUNDATION_EXTERN NSInteger const kYHTXDownloadDownloadingErrorKey;
+
+FOUNDATION_EXTERN NSInteger const kYHTXUploadUploadingErrorKey;
+FOUNDATION_EXTERN NSInteger const kYHTXUploadNoFilePathErrorKey;
 
 @interface YHTXStorage : NSObject
 + (instancetype)sharedStorage;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
+
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, QCloudCOSXMLUploadObjectRequest *> *allUploadRequests;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, QCloudCOSXMLUploadObjectResumeData> *allUploadResumeDatas;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSString *, QCloudGetObjectRequest *> *allDownloadRequests;
 
 
 /**
@@ -42,17 +51,35 @@ typedef void(^YHTXStorageDownloadCompletionBlock)(id _Nullable outputObject,NSEr
  */
 - (void)setupStorageServiceWithAppID:(NSString *)appID regionName:(NSString *)regionName;
 
-
+#pragma mark - Uplaod
 /**
  * 上传文件的方法
  */
 - (void)uploadFileWithFileName:(NSString *)fileName filePath:(NSString *)filePath bucketName:(NSString *)bucketName progressBlock:(nullable YHTXStorageUploadProgressBlock)progressBlock completionBlock:(nullable YHTXStorageUploadCompletionBlock)completionBlock;
 
+#pragma mark - Pause Upload Request
+- (nullable QCloudCOSXMLUploadObjectResumeData)pauseUploadRequest:(QCloudCOSXMLUploadObjectRequest *)uploadRequest;
+- (void)pauseUploadRequestWithBucketName:(NSString *)bucketName fileName:(NSString *)fileName;
+#pragma mark - Resume Upload
+- (void)resumeUploadRequestWithResumeData:(QCloudCOSXMLUploadObjectResumeData)resumeData progressBlock:(nullable YHTXStorageUploadProgressBlock)progressBlock completionBlock:(nullable YHTXStorageUploadCompletionBlock)completionBlock;
+- (void)resumeUploadRequestWithBucketName:(NSString *)bucketName fileName:(NSString *)fileName progressBlock:(nullable YHTXStorageUploadProgressBlock)progressBlock completionBlock:(nullable YHTXStorageUploadCompletionBlock)completionBlock;
+#pragma mark - Cancel Upload Request
+- (void)cancelUploadRequest:(QCloudCOSXMLUploadObjectRequest *)uploadRequest;
+- (void)cancelUploadRequestWithBucketName:(NSString *)bucketName fileName:(NSString *)fileName;
 
+#pragma mark - Download
 /**
  * 下载文件的方法
+ * 当savePath存在，并且该路径下有图片，则直接返回沙盒图片，不会走SDK的下载方法
+ * savePath最好不要为空
  */
 - (void)downloadFileWithObjectName:(NSString *)objectName bucketName:(NSString *)bucketName savePath:(nullable NSString *)savePath progressBlock:(nullable YHTXStorageDownloadProgressBlock)progressBlock completionBlock:(nullable YHTXStorageDownloadCompletionBlock)completionBlock;
+/**
+ * 是否正在下载
+ */
+- (BOOL)isDownloadingWithObjectName:(NSString *)objectName bucketName:(NSString *)bucketName;
+
+#pragma mark - Cancel Download Request
 
 
 @end
